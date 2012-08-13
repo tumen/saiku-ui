@@ -236,13 +236,22 @@ var WorkspaceDropZone = Backbone.View.extend({
         var myself = this;
         var $originalItem =  $(myself.workspace.el).find('.sidebar')
                                     .find('a[href="' + member + '"]').parent();
+        //TODO 新增一个判断量
+        var test_year = member.replace('#','').split('/')[3];//判断是不是[Time].[Year]
+        //if(test_year!="[Time].[Year]"){
         var insertElement = $(ui.item);
+        //}
+        //else{
+        //    $('div.filter ul.connectable').append("<li></li>");
+        //    var insertElement= $('div.filter ul.connectable li');
+        //}
         var type = $(ui.item).hasClass('d_dimension') ? "d_dimension" : "d_measure";
 
         var sourceAxis = "";
-        if ($axis.hasClass('rows')) sourceAxis = "ROWS";
-        if ($axis.hasClass('columns')) sourceAxis = "COLUMNS";
-        if ($axis.hasClass('filter')) sourceAxis = "FILTER";
+        if ($axis.hasClass('rows')&&test_year!="[Time].[Year]") sourceAxis = "ROWS";
+        if ($axis.hasClass('columns')&&test_year!="[Time].[Year]") sourceAxis = "COLUMNS";
+        if ($axis.hasClass('filter')||test_year=="[Time].[Year]") sourceAxis = "FILTER";
+        //以上为修改
 
         source = ".rows, .columns, .filter";
         allAxes.find(source).find('a').each( function(index, element) {
@@ -274,11 +283,20 @@ var WorkspaceDropZone = Backbone.View.extend({
             }
             next = $(ui.placeholder).next();
         }
-            
 
-        $originalItem.parent().find('.ui-draggable-disabled').clone().attr('class', 'ui-draggable').removeAttr('style')
-                                .addClass(type)
-                                .insertAfter(insertElement);
+
+        //TODO 判断是否是year
+        if(test_year=="[Time].[Year]"){
+            $originalItem.parent().find('.ui-draggable-disabled').clone().attr('class', 'ui-draggable').removeAttr('style')
+                .addClass(type)
+                .appendTo('div.filter ul.connectable');
+        }
+        else{
+            $originalItem.parent().find('.ui-draggable-disabled').clone().attr('class', 'ui-draggable').removeAttr('style')
+                .addClass(type)
+                .insertAfter(insertElement);
+        }
+        //以上为修改
         
 
         axis.find('.d_dimension a').each( function(index, element) {
