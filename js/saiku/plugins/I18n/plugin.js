@@ -211,19 +211,19 @@ Saiku.i18n.automatic_i18n();
 /** 
  * Add translate button
  */
-Saiku.events.bind('toolbar:render', function(args) {
-    if (Saiku.i18n.locale != "en") {
-        var $link = $("<a />").text(Saiku.i18n.locale)
-            .attr({ 
-                href: "#translate",
-                title: "Improve this translation"
-            })
-            .click(Saiku.i18n.improve_translation)
-            .addClass('sprite translate i18n');
-        var $li = $("<li />").append($link);
-        $(args.toolbar.el).find('ul').append($li);
-    }
-});
+//Saiku.events.bind('toolbar:render', function(args) {
+//    if (Saiku.i18n.locale != "en") {
+//        var $link = $("<a />").text(Saiku.i18n.locale)
+//            .attr({
+//                href: "#translate",
+//                title: "Improve this translation"
+//            })
+//            .click(Saiku.i18n.improve_translation)
+//            .addClass('sprite translate i18n');
+//        var $li = $("<li />").append($link);
+//        $(args.toolbar.el).find('ul').append($li);
+//    }
+//});
 
 /**
  * Bind to new workspace

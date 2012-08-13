@@ -22,7 +22,7 @@
  * Change settings here
  */
 var Settings = {
-    VERSION: "Saiku 2.4-SNAPSHOT",
+    VERSION: "ADC - Online Analytics",
     BIPLUGIN: false,
     BASE_URL: "",
     TOMCAT_WEBAPP: "/saiku",

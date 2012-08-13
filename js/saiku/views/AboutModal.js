@@ -29,7 +29,7 @@ var AboutModal = Modal.extend({
     },
     
     type: "info",
-    
-    message: Settings.VERSION + "<br>" + 
-        "<a href='http://www.analytical-labs.com'>http://www.analytical-labs.com/</a>"
+
+    message: Settings.VERSION + "<br>" +
+        " <br> 支付宝-数据平台-数据开放组"
 });
