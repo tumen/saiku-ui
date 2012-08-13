@@ -94,10 +94,16 @@ var DimensionList = Backbone.View.extend({
         if ($(event.target).parent().hasClass('ui-state-disabled')) {
             return;
         }
-        
+
+         //TODO 更改相应的target
+         if($(event.target).attr("title")=="[Time].[Year]"){
+             $axis=$(this.workspace.el).find(".filter ul");}
+         else{
+         //在此修改
         $axis = $(this.workspace.el).find(".columns ul li").length > 0 ?
             $(this.workspace.el).find(".rows ul") :
             $(this.workspace.el).find(".columns ul");
+         }
         $target = $(event.target).parent().clone()
             .appendTo($axis);
         this.workspace.drop_zones.select_dimension({
