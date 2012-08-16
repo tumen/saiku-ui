@@ -371,14 +371,28 @@ var WorkspaceDropZone = Backbone.View.extend({
             $(event.target).parent().find('.level') :
             $(event.target);
         var key = $target.attr('href').replace('#', '');
-        
-        // Launch selections dialog
-        (new SelectionsModal({
-            target: $target,
-            name: $target.text(),
-            key: key,
-            workspace: this.workspace
-        })).open();
+
+        //TODO 判断是否年，如果是改为弹出日期控件datepicker
+        if($target.attr("title")=="[Time].[Year]"){
+            var year_select="";
+            var month_select="";
+            var day_select="";
+            (new DateSelectionModal({
+                target: $target,
+                name: $target.text(),
+                key: key,
+                workspace: this.workspace
+            })).start_this();
+        }
+        else{
+            // Launch selections dialog
+            (new SelectionsModal({
+                target: $target,
+                name: $target.text(),
+                key: key,
+                workspace: this.workspace
+            })).open();
+        }
         
         // Prevent default action
         try {
