@@ -78,11 +78,13 @@ var Chart = Backbone.View.extend({
         var $chart_li = $('<li class="seperator"></li>').append($chart_button);
         $(this.workspace.toolbar.el).find("ul").append($chart_li);
     },
-    
+
+    //  TODO 更改图标显示形式,添加样式类型my_chart
     show: function(event, ui) {
-        $(this.workspace.el).find('.workspace_results table').toggle();
-        $(this.el).toggle();
-        $(this.nav).toggle();
+        $(this.workspace.el).find('.workspace_results table').insertBefore($(this.nav));
+        $(this.workspace.el).find('.workspace_results table').css({"float":"left","clear":"both"});
+        $(this.el).toggle().toggleClass("my_chart");
+        $(this.nav).toggle().toggleClass("my_chart");
         $(event.target).toggleClass('on');
         
         if ($(event.target).hasClass('on')) {
