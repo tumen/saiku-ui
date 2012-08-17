@@ -124,7 +124,13 @@ var WorkspaceDropZone = Backbone.View.extend({
     
     select_dimension: function(event, ui) {
 
-        $axis = ui.item.parents('.fields_list_body');
+        //TODO 修改判断是不是year
+        if(ui.item.children('a').attr("title")=="[Time].[Year]"){
+            $axis = ui.item.parents('.workspace_fields').find('.filter');
+        }else{
+            $axis = ui.item.parents('.fields_list_body');
+        }
+        //判断是不是year
         var target = "";
         
         if ($axis.hasClass('rows')) target = "ROWS";
@@ -186,6 +192,7 @@ var WorkspaceDropZone = Backbone.View.extend({
         this.workspace.query.move_dimension(member, 
                 target, index);
 
+        //TODO 自动弹出过滤的内容
         if ("FILTER" == target) {
             var ev = { target : $axis.find('a[href="#' + member + '"]') };
             this.selections(ev, ui);

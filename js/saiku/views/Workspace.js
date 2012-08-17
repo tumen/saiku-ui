@@ -247,7 +247,8 @@ var Workspace = Backbone.View.extend({
             $(this.el).find('.measure_tree').html('').append($(this.measure_list.el));
             //TODO 自动添加一个year
             $('.folder_collapsed[title=Time]').trigger("click");//打开time的文件夹
-            $('.dimension[title$="[Time].[Year]"]').trigger("click");
+            $('.level[title$="[Time].[Year]"]').trigger("click");
+            return;
             //自动添加一个year
         } else {
             // Someone literally selected "Select a cube"
