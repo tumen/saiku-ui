@@ -245,6 +245,7 @@ var Workspace = Backbone.View.extend({
                 dimension: Saiku.session.sessionworkspace.measures[this.selected_cube]
             });
             $(this.el).find('.measure_tree').html('').append($(this.measure_list.el));
+
             //TODO 自动添加一个year
             $('.folder_collapsed[title=Time]').trigger("click");//打开time的文件夹
             $('.level[title$="[Time].[Year]"]').trigger("click");
